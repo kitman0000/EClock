@@ -1,4 +1,4 @@
-// EClock.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// EClock.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 //
 #include <stdlib.h>
 #include "stdafx.h"
@@ -224,18 +224,18 @@ DWORD WINAPI showTime(LPVOID lpParameter)
 		struct tm *p;
 		time(&timep);
 		p = gmtime(&timep);
-		int second = p->tm_sec;/*»ñÈ¡µ±Ç°Ãë*/
-		int minute = p->tm_min; /*»ñÈ¡µ±Ç°·Ö*/
-		int hour = p->tm_hour + 8;/*»ñÈ¡µ±Ç°Ê±,ÕâÀï»ñÈ¡Î÷·½µÄÊ±¼ä,¸ÕºÃÏà²î°Ë¸öĞ¡Ê±*/
+		int second = p->tm_sec;/*è·å–å½“å‰ç§’*/
+		int minute = p->tm_min; /*è·å–å½“å‰åˆ†*/
+		int hour = p->tm_hour + 8;/*è·å–å½“å‰æ—¶,è¿™é‡Œè·å–è¥¿æ–¹çš„æ—¶é—´,åˆšå¥½ç›¸å·®å…«ä¸ªå°æ—¶*/
 		int n1, n2, n3, n4, n5, n6;
 		if (hour >= 24)hour -= 24;
-		n1 = hour > 10 ? hour/10 : 0;
-		n2 = hour > 10 ? hour - n1 * 10 : hour;
+		n1 = hour >= 10 ? hour/10 : 0;
+		n2 = hour >= 10 ? hour - n1 * 10 : hour;
 		n3 = minute >= 10 ? minute / 10 : 0;
 		n4 = minute >= 10 ? minute - n3 * 10 : minute;
 		n5 = second >= 10 ? second / 10 : 0;
 		n6 = second >= 10 ? second - n5 * 10 : second;
-		printf("%d\n%d\n%d\n%d\n%d\n%d\n", n1, n2, n3, n4, n5, n6);
+		//printf("%d\n%d\n%d\n%d\n%d\n%d\n", n1, n2, n3, n4, n5, n6);
 		switch (n1)
 		{
 		case 1: {One1(); break; }
@@ -315,7 +315,7 @@ DWORD WINAPI showTime(LPVOID lpParameter)
 		case 0: {Zero1(); break; }
 		}
 		printf("\n");
-		//µÚ¶şĞĞ
+		//ç¬¬äºŒè¡Œ
 		switch (n1)
 		{
 		case 1: {One2(); break; }
@@ -394,7 +394,7 @@ DWORD WINAPI showTime(LPVOID lpParameter)
 		case 9: {Nine2(); break; }
 		case 0: {Zero2(); break; }
 		}
-		//µÚÈıĞĞ
+		//ç¬¬ä¸‰è¡Œ
 		printf("\n");
 		switch (n1)
 		{
@@ -475,7 +475,7 @@ DWORD WINAPI showTime(LPVOID lpParameter)
 		case 0: {Zero3(); break; }
 		}
 		printf("\n");
-		//µÚËÄĞĞ
+		//ç¬¬å››è¡Œ
 		switch (n1)
 		{
 		case 1: {One4(); break; }
@@ -554,7 +554,7 @@ DWORD WINAPI showTime(LPVOID lpParameter)
 		case 9: {Nine4(); break; }
 		case 0: {Zero4(); break; }
 		}
-		//µÚÎåĞĞ
+		//ç¬¬äº”è¡Œ
 		printf("\n");
 		switch (n1)
 		{
